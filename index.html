@@ -683,7 +683,7 @@ code.c {
           <thead><tr><th>증상</th><th>원인</th><th>해결</th></tr></thead>
           <tbody>
             <tr><td><code>irm</code>을 인식할 수 없음</td><td>CMD에서 실행</td><td>PowerShell 창에서 다시</td></tr>
-            <tr><td><code>claude</code>를 찾을 수 없음</td><td>경로 갱신 안 됨</td><td>VS Code 완전 종료 후 재실행</td></tr>
+            <tr><td><code>claude</code>를 찾을 수 없음</td><td>경로 갱신 안 됨</td><td>VS Code 완전 종료 후 재실행<br><b class="hl">그래도 안 되면 → 다음 장</b></td></tr>
             <tr><td>스크립트 실행 차단</td><td>실행 정책</td><td>
               <div class="inline-cmd"><code>Set-ExecutionPolicy -Scope CurrentUser RemoteSigned</code><button class="copy-btn" type="button">복사</button></div>
               후 재시도</td></tr>
@@ -695,6 +695,35 @@ code.c {
     </section>
 
     <!-- #17 -->
+    <section class="slide trouble" data-part="2부 · 환경 셋팅" data-title="설치했는데 claude를 못 찾을 때 (PATH)"
+      data-notes="①이 False면 PATH 문제가 아니라 설치가 안 된 것 → 11장 설치 명령부터 다시. 급할 때는 $env:Path += &quot;;$env:USERPROFILE\.local\bin&quot; 로 지금 열린 터미널에서만 임시로 쓸 수 있음(창 닫으면 사라지니 ②는 꼭 하기).">
+      <p class="eyebrow">트러블슈팅 · PATH</p>
+      <h2>설치했는데 <code style="font-family:var(--font-mono)">claude</code>를 못 찾을 때</h2>
+      <div class="body" style="margin-top:36px; gap:26px">
+        <div style="display:grid; grid-template-columns:96px 1fr; gap:22px; align-items:start">
+          <span class="ok-row"><span class="tag" style="font-size:36px; padding:6px 28px">1</span></span>
+          <div style="display:flex; flex-direction:column; gap:12px">
+            <p style="font-size:36px"><b>설치됐는지 확인</b> <span class="muted">— <code class="c">True</code>가 나오면 설치는 됨, 경로(PATH)만 문제</span></p>
+            <div class="term sm">
+              <div class="term-head"><span class="dots"><i></i><i></i><i></i></span><span class="term-label">PowerShell</span><button class="copy-btn" type="button">복사</button></div>
+              <pre style="padding:22px 40px 26px"><code>Test-Path "$env:USERPROFILE\.local\bin\claude.exe"</code></pre>
+            </div>
+          </div>
+          <span class="ok-row"><span class="tag" style="font-size:36px; padding:6px 28px">2</span></span>
+          <div style="display:flex; flex-direction:column; gap:12px">
+            <p style="font-size:36px"><b>경로(PATH)에 영구 등록</b> <span class="muted">— 한 줄 그대로 복사·붙여넣기</span></p>
+            <div class="term sm">
+              <div class="term-head"><span class="dots"><i></i><i></i><i></i></span><span class="term-label">PowerShell</span><button class="copy-btn" type="button">복사</button></div>
+              <pre style="padding:22px 40px 26px"><code>[Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "User") + ";$env:USERPROFILE\.local\bin", "User")</code></pre>
+            </div>
+          </div>
+          <span class="ok-row"><span class="tag" style="font-size:36px; padding:6px 28px">3</span></span>
+          <p style="font-size:36px; padding-top:4px"><b>VS Code 완전히 껐다 켜기</b> → <code class="c">claude --version</code> 다시 입력</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- #18 -->
     <section class="slide bullets" data-part="2부 · 환경 셋팅" data-title="쉬는 시간 5분"
       data-notes="쉬는 시간에 설치 미완료자 명단 확인.">
       <p class="eyebrow">잠깐 쉬어요</p>
