@@ -17,7 +17,7 @@
 
     <!-- #1 -->
     <section class="slide title" data-part="1부 · 오리엔테이션" data-title="표지"
-      data-notes="지난주 복습 1분. &quot;오늘은 만든 걸 남에게 보여주는 날&quot;. QR로 슬라이드 주소를 먼저 열어 두게 하면 9장에서 실습 파일을 바로 내려받을 수 있음.">
+      data-notes="지난주 복습 1분. &quot;오늘은 만든 걸 남에게 보여주는 날&quot;. 아래 슬라이드 주소를 각자 노트북에서 열어 두게 하면 9장에서 실습 파일을 바로 내려받을 수 있음.">
       <div class="cover-text">
         <p class="eyebrow">클로드코드 기초 · 2차시</p>
         <h1>선생님을 위한<br><span class="hl">클로드코드</span> 기초</h1>
@@ -27,10 +27,7 @@
           <span>2026년 10월 23일</span><span class="sep"></span>
           <span class="brand">DeepVibe</span>
         </div>
-        <div class="cover-qr">
-          <div class="placeholder qr" data-img="lesson2-qr.png">QR</div>
-          <span class="small">이 슬라이드 주소<br>휴대폰·노트북으로 열어 두세요</span>
-        </div>
+        <p class="cover-url"><span class="muted">슬라이드 주소</span> <b>liebe842.github.io/claudecode-ppt/lesson2.html</b></p>
       </div>
       <div class="mock" aria-hidden="true">
         <div class="term-head"><span class="dots"><i></i><i></i><i></i></span><span class="term-label">PowerShell — guestbook</span></div>
@@ -47,7 +44,7 @@
 
     <!-- #2 -->
     <section class="slide bullets" data-part="1부 · 오리엔테이션" data-title="오늘 끝나면 이렇게 됩니다"
-      data-notes="강사의 완성본 주소를 QR로 띄워 수강생이 직접 글을 써 보게 하기. 오늘의 도착점을 먼저 체험시키는 장.">
+      data-notes="강사의 완성본 주소를 화면에 띄워 수강생이 직접 글을 써 보게 하기. 오늘의 도착점을 먼저 체험시키는 장.">
       <p class="eyebrow">오늘의 도착점</p>
       <h2>오늘 끝나면 이렇게 됩니다</h2>
       <div class="body">
@@ -167,20 +164,14 @@ claude --version</code></pre>
       data-notes="ZIP 안에는 파일이 바로 들어 있어서(폴더 없이) &quot;모두 압축 풀기&quot;만 하면 guestbook\파일들 구조가 됨. 압축을 안 풀고 ZIP 안에서 바로 열면 수정이 저장되지 않으니 꼭 풀기.">
       <p class="eyebrow">2부 · 실습 파일</p>
       <h2>실습 페이지 내려받기</h2>
-      <div class="body" style="flex-direction:row; gap:56px; align-items:flex-start">
-        <div style="flex:1; display:flex; flex-direction:column; gap:30px">
-          <a class="dl-btn" href="downloads/guestbook.zip" download>⬇ guestbook.zip 내려받기</a>
-          <ul class="list num sm">
-            <li>내려받은 ZIP을 <b>바탕화면</b>으로 옮기기</li>
-            <li>오른쪽 클릭 → <b>모두 압축 풀기</b> → <code class="c">guestbook</code> 폴더 생성</li>
-            <li>안에 <code class="c">index.html</code> <code class="c">style.css</code> <code class="c">app.js</code> <code class="c">config.js</code> 4개가 보이면 OK</li>
-          </ul>
-          <p class="small"><code class="c">.gitignore</code> 파일도 있어요. 건드리지 않기</p>
-        </div>
-        <div class="qr-box">
-          <div class="placeholder qr" data-img="lesson2-qr.png">QR</div>
-          <span class="small">강사 화면만 보고 있다면<br>QR로 접속해서 내려받기</span>
-        </div>
+      <div class="body" style="gap:30px">
+        <a class="dl-btn" href="downloads/guestbook.zip" download>⬇ guestbook.zip 내려받기</a>
+        <ul class="list num sm" style="gap:20px">
+          <li>내려받은 ZIP을 <b>바탕화면</b>으로 옮기기</li>
+          <li>오른쪽 클릭 → <b>모두 압축 풀기</b> → <code class="c">guestbook</code> 폴더 생성</li>
+          <li>안에 <code class="c">index.html</code> <code class="c">style.css</code> <code class="c">app.js</code> <code class="c">config.js</code> 4개가 보이면 OK <span class="muted">(.gitignore는 건드리지 않기)</span></li>
+        </ul>
+        <div class="tip" style="padding:24px 36px; font-size:34px">강사 화면만 보고 있다면 → 내 브라우저에서 <b class="hl">liebe842.github.io/claudecode-ppt/lesson2.html#9</b></div>
       </div>
     </section>
 
@@ -326,21 +317,17 @@ git config --global init.defaultBranch main</code></pre>
 
     <!-- #18 -->
     <section class="slide command" data-part="3부 · GitHub에 올리기" data-title="③ 브라우저에서 코드 넣기"
-      data-notes="코드 복사: VS Code 터미널에서 코드를 드래그하면 오른쪽 클릭 또는 Ctrl+C로 복사됨. 직접 보고 타이핑해도 됨(대소문자 구분 없음). 브라우저가 안 열리면 github.com/login/device 를 직접 열기. 화면 캡처 img/lesson2-gh-2.png(터미널 코드), img/lesson2-gh-3.png(브라우저 Authorize)를 넣으면 자동 표시.">
+      data-notes="코드 복사: VS Code 터미널에서 코드를 드래그하면 오른쪽 클릭 또는 Ctrl+C로 복사됨. 직접 보고 타이핑해도 됨(대소문자 구분 없음). 브라우저가 안 열리면 github.com/login/device 를 직접 열기.">
       <p class="eyebrow">3부 · 단계 ③</p>
       <h2>브라우저에서 코드 넣기</h2>
-      <div class="body" style="flex-direction:row; gap:48px; align-items:stretch">
-        <ul class="list num sm" style="flex:1; align-content:start; gap:22px">
+      <div class="body" style="gap:26px">
+        <ul class="list num sm" style="gap:22px">
           <li>터미널에 나온 <b class="hl">8자리 코드</b> 확인 <span class="sub"><code class="c">First copy your one-time code: ABCD-1234</code></span></li>
           <li><span class="key">Enter</span> → 브라우저가 열림 <span class="muted">(GitHub 로그인)</span></li>
-          <li>코드 입력 → <b>Continue</b></li>
-          <li><b>Authorize github</b> 클릭</li>
-          <li>터미널에 <code class="c">✓ Logged in as ○○</code></li>
+          <li>코드 입력 → <b>Continue</b> → <b>Authorize github</b></li>
+          <li>터미널에 <code class="c">✓ Logged in as ○○</code> 가 나오면 성공</li>
         </ul>
-        <div style="flex:0 0 640px; display:grid; grid-template-rows:1fr 1fr; gap:16px">
-          <div class="placeholder" data-img="lesson2-gh-2.png" style="font-size:26px">스크린샷: 터미널의 8자리 코드</div>
-          <div class="placeholder" data-img="lesson2-gh-3.png" style="font-size:26px">스크린샷: 브라우저 Authorize 화면</div>
-        </div>
+        <div class="tip" style="padding:24px 36px; font-size:34px">브라우저가 안 열리면 → <b>github.com/login/device</b> 를 직접 열고 코드 입력</div>
       </div>
     </section>
 
@@ -442,13 +429,17 @@ git config --global init.defaultBranch main</code></pre>
 
     <!-- #25 -->
     <section class="slide command" data-part="4부 · Vercel로 인터넷에 열기" data-title="① 새 프로젝트 만들기"
-      data-notes="화면 캡처 img/lesson2-vercel-import.png를 넣으면 자동 표시.">
+      data-notes="Vercel 첫 화면이 비어 있으면 오른쪽 위 Add New… 대신 가운데 Import Project 버튼이 보일 수도 있음. 같은 기능.">
       <p class="eyebrow">4부 · 단계 ①</p>
       <h2>새 프로젝트 만들기</h2>
-      <div class="body" style="gap:28px">
-        <div class="steps-inline" style="font-size:38px"><b>vercel.com</b> <span class="arrow">→</span> 오른쪽 위 <b>Add New…</b> <span class="arrow">→</span> <b>Project</b> <span class="arrow">→</span> <code class="c">guestbook</code> 옆 <b>Import</b></div>
-        <div class="placeholder" data-img="lesson2-vercel-import.png" style="flex:1">스크린샷: Vercel Import Git Repository 화면</div>
-        <div class="tip" style="padding:22px 36px; font-size:34px"><code class="c">guestbook</code>이 목록에 없으면 → <b>다음 장</b></div>
+      <div class="body">
+        <ul class="list num">
+          <li><b>vercel.com</b> 접속 <span class="muted">(GitHub로 로그인된 상태)</span></li>
+          <li>오른쪽 위 <b>Add New…</b> → <b>Project</b></li>
+          <li><b>Import Git Repository</b> 목록에서 <code class="c">guestbook</code> 찾기</li>
+          <li>옆의 <b class="hl">Import</b> 클릭</li>
+        </ul>
+        <div class="tip"><code class="c">guestbook</code>이 목록에 없으면 → <b>다음 장</b></div>
       </div>
     </section>
 
@@ -634,19 +625,16 @@ git config --global init.defaultBranch main</code></pre>
 
     <!-- #37 -->
     <section class="slide command" data-part="6부 · Supabase로 글 저장하기" data-title="② SQL Editor에서 실행"
-      data-notes="&quot;destructive operation&quot; 경고가 나오면 내용 확인 후 진행. 표 이름은 Claude가 다르게 지을 수 있음. 화면 캡처 img/lesson2-sql-editor.png를 넣으면 자동 표시.">
+      data-notes="&quot;destructive operation&quot; 경고가 나오면 내용 확인 후 진행. 표 이름은 Claude가 다르게 지을 수 있음.">
       <p class="eyebrow">6부 · 단계 ②</p>
       <h2>SQL Editor에 붙여넣고 실행</h2>
-      <div class="body" style="flex-direction:row; gap:48px; align-items:stretch">
-        <div style="flex:1; display:flex; flex-direction:column; gap:28px">
-          <ul class="list num sm">
-            <li>Supabase 왼쪽 메뉴 <b>SQL Editor</b></li>
-            <li>빈 칸에 붙여넣기 → <b>Run</b></li>
-            <li><code class="c">Success. No rows returned</code> 면 성공</li>
-            <li>왼쪽 <b>Table Editor</b>에서 <code class="c">entries</code> 표 확인</li>
-          </ul>
-        </div>
-        <div class="placeholder" data-img="lesson2-sql-editor.png" style="flex:0 0 720px">스크린샷: SQL Editor 화면</div>
+      <div class="body">
+        <ul class="list num">
+          <li>Supabase 왼쪽 메뉴 <b>SQL Editor</b></li>
+          <li>빈 칸에 붙여넣기 → 오른쪽 아래 <b class="hl">Run</b></li>
+          <li><code class="c">Success. No rows returned</code> 가 나오면 성공</li>
+          <li>왼쪽 <b>Table Editor</b>에서 <code class="c">entries</code> 표가 생겼는지 확인</li>
+        </ul>
       </div>
     </section>
 

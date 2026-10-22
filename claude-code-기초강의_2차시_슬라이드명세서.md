@@ -34,11 +34,11 @@
 ## 1. 기술 요구사항
 
 - 1차시와 **공통 파일**을 씀: 디자인은 `slides.css`, 조작(키보드·복사 버튼·발표자 노트·진행 바·목록·차시 전환)은 `slides.js`. 새로 디자인하지 말 것.
-- 파일: `lesson2.html` (`<html data-lesson="2">`, 슬라이드 본문만 담음). 이미지는 `img/lesson2-*.png`.
+- 파일: `lesson2.html` (`<html data-lesson="2">`, 슬라이드 본문만 담음).
 - 차시 전환 버튼은 `slides.js` 맨 위 `LESSONS` 목록에서 만들어짐. 3차시가 생기면 그 목록에 한 줄 추가.
 - **실습 페이지 배포 파일**: 원본은 `lesson2-files/guestbook/`에 두고, 그 폴더 안의 내용을 압축한 `downloads/guestbook.zip`을 #9 슬라이드의 다운로드 버튼이 가리킴. ZIP은 원본을 고칠 때마다 다시 만들 것.
-- **슬라이드 공개**: 수강생이 자기 컴퓨터에서 버튼을 누를 수 있도록 이 저장소(슬라이드 + `downloads/`)를 Vercel에 배포해 주소를 공유. 주소는 #1 표지와 #9에 QR로 표시. (강사 슬라이드도 오늘 배우는 방식 그대로 배포된다는 점을 수업 중 예시로 활용)
-- QR 코드는 외부 라이브러리 없이 만들기 어려우므로, 배포 주소가 정해지면 QR 이미지(`img/lesson2-qr.png`)를 넣는 자리로 둘 것.
+- **슬라이드 공개**: 수강생이 자기 컴퓨터에서 버튼을 누를 수 있도록 이 저장소를 GitHub Pages로 공개 (`liebe842.github.io/claudecode-ppt/lesson2.html`). 주소는 #1 표지와 #9에 **글자로** 표시.
+- **이미지·QR 없이 텍스트만**으로 구성. 화면 안내는 메뉴 이름과 단계 목록으로 대신함.
 - 슬라이드 타입은 1차시와 동일: `.title`, `.section`, `.bullets`, `.command`, `.table`, `.twocol`, `.checkpoint`, `.trouble`.
 - **새 타입 `.optional`(심화)**: 심화 슬라이드는 모두 이 클래스를 함께 붙임.
   - 우측 상단에 `심화 · 시간이 있으면` 배지 표시
@@ -89,7 +89,7 @@
 - 휴대폰으로 열린다
 - 누가 글을 쓰면 **모두의 화면에** 보인다
 - 고치고 싶으면 Claude에게 말하고 → 푸시 → 1분 뒤 반영
-- notes: 강사의 완성본 주소를 QR로 띄워 수강생이 직접 글을 써 보게 하기. 오늘의 도착점을 먼저 체험시키는 장.
+- notes: 강사의 완성본 주소를 화면에 띄워 수강생이 직접 글을 써 보게 하기. 오늘의 도착점을 먼저 체험시키는 장.
 
 **#3 [table] 오늘 등장하는 세 친구**
 | 서비스 | 비유 | 하는 일 |
@@ -140,10 +140,10 @@ winget install --id GitHub.cli
 
 **#9 [command] 실습 페이지 내려받기**
 - 슬라이드 가운데에 큰 **[⬇ guestbook.zip 내려받기]** 버튼 (`<a href="downloads/guestbook.zip" download>`)
-- 버튼 옆에 이 슬라이드 주소(`…/lesson2.html#9`)의 QR 코드 — 강사 화면만 보고 있는 분은 QR로 접속해 내려받기
+- 아래 안내 칸: 강사 화면만 보고 있다면 → 내 브라우저에서 `liebe842.github.io/claudecode-ppt/lesson2.html#9`
 - 내려받은 `guestbook.zip` → 바탕화면으로 옮기기 → 오른쪽 클릭 **모두 압축 풀기** → `guestbook` 폴더 생성
 - 폴더 안에 `index.html`, `style.css`, `app.js`, `config.js` 4개가 보이면 OK (`.gitignore`도 있음, 건드리지 않기)
-- notes: ZIP 안에는 파일이 **바로** 들어 있어서(폴더 없이) "모두 압축 풀기"만 하면 `guestbook\파일들` 구조가 됨. 압축을 안 풀고 ZIP 안에서 바로 열면 수정이 저장되지 않으니 꼭 풀기. placeholder: `img/lesson2-zip.png`.
+- notes: ZIP 안에는 파일이 **바로** 들어 있어서(폴더 없이) "모두 압축 풀기"만 하면 `guestbook\파일들` 구조가 됨. 압축을 안 풀고 ZIP 안에서 바로 열면 수정이 저장되지 않으니 꼭 풀기.
 
 **#10 [command] 폴더 열고 Claude 켜기**
 - VS Code → `파일 > 폴더 열기` → `guestbook` → 신뢰 클릭
@@ -223,7 +223,7 @@ gh auth login
 3. 코드 입력 → **Continue**
 4. **Authorize github** 클릭
 5. 터미널에 `✓ Logged in as ○○`
-- 오른쪽에 스크린샷 2장: `img/lesson2-gh-2.png`(터미널의 코드), `img/lesson2-gh-3.png`(브라우저 Authorize 화면)
+- 아래 안내 칸: 브라우저가 안 열리면 → `github.com/login/device` 를 직접 열고 코드 입력
 - notes: VS Code 터미널에서 코드를 드래그하면 오른쪽 클릭 또는 Ctrl+C로 복사됨. 직접 보고 타이핑해도 됨(대소문자 구분 없음). 브라우저가 안 열리면 github.com/login/device 를 직접 열기.
 
 **#19 [command] 로그인 확인**
@@ -276,7 +276,6 @@ gh auth status
 - vercel.com → 오른쪽 위 **Add New…** → **Project**
 - **Import Git Repository**에서 `guestbook` 찾기 → **Import**
 - `guestbook`이 목록에 없으면 → **Adjust GitHub App Permissions** → 저장소 접근 허용(다음 장)
-- placeholder: `img/lesson2-vercel-import.png`
 
 **#26 [bullets] 저장소가 안 보일 때**
 - Vercel에게 "내 보관소를 봐도 된다"는 허락이 필요함
@@ -366,7 +365,6 @@ Supabase에 이 방명록 글을 저장할 테이블을 만드는 SQL을 써줘.
 - Supabase 왼쪽 메뉴 **SQL Editor** → 빈 칸에 붙여넣기 → **Run**
 - `Success. No rows returned` 가 나오면 성공
 - 왼쪽 **Table Editor**에서 `entries` 표가 생긴 것 확인
-- placeholder: `img/lesson2-sql-editor.png`
 - notes: "destructive operation" 경고가 나오면 내용 확인 후 진행. 표 이름은 Claude가 다르게 지을 수 있음.
 
 **#38 [bullets] RLS — 공책의 자물쇠**
@@ -536,7 +534,6 @@ claude mcp add --scope project --transport http supabase "https://mcp.supabase.c
 - 명령어 박스 안의 텍스트는 **한 글자도 바꾸지 말 것**. 단 `홍길동`, `프로젝트ID`, `여기에붙여넣기`처럼 바꿔 쓰는 자리는 **강조색으로 표시**해 수강생이 알아보게.
 - `[checkpoint]`는 1차시처럼 배경색을 달리하고, `.optional`은 그와 또 다른 배경으로 구분.
 - `[trouble]` 표는 최소 28px, 필요하면 2장으로 나눔.
-- 이미지 자리는 `<div class="placeholder">스크린샷: ○○ 화면</div>` + `data-img="lesson2-○○.png"`.
 - 1차시처럼 마지막에 슬라이드 목록(`data-title` 기반) 제공. 심화는 목록에서 "심화" 묶음으로.
 - 완성 후 `lesson2.html`을 브라우저로 열어 전 장이 넘어가는지, 복사 버튼이 동작하는지, 심화 배지가 보이는지 확인하고 보고할 것.
 

@@ -414,11 +414,10 @@ code.c {
 .dl-btn:hover { background: var(--accent-strong); }
 .dl-btn:active { transform: var(--press-scale); }
 
-/* QR 이미지 자리 */
-.placeholder.qr { width: 320px; height: 320px; flex: none; font-size: 36px; }
-.qr-box { flex: none; display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center; }
-.cover-qr { margin-top: 48px; display: flex; align-items: center; gap: 28px; }
-.cover-qr .placeholder.qr { width: 180px; height: 180px; font-size: 28px; border-width: 3px; }
+/* 표지의 슬라이드 주소 */
+.cover-url { margin-top: 44px; font-size: 26px; line-height: 1.5; }
+.cover-url .muted { display: block; }
+.cover-url b { font-family: var(--font-mono); font-size: 30px; font-weight: 700; color: var(--text-default); white-space: nowrap; }
 
 /* =====================================================================
    PDF 저장(인쇄): 슬라이드 1장 = 1페이지
