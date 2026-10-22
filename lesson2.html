@@ -1,0 +1,954 @@
+<!doctype html>
+<html lang="ko" data-theme="light" data-lesson="2">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>클로드코드 기초 2차시</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<main id="stage">
+  <div class="deck" id="deck">
+
+
+<!-- =============================== 1부. 오리엔테이션 =============================== -->
+
+    <!-- #1 -->
+    <section class="slide title" data-part="1부 · 오리엔테이션" data-title="표지"
+      data-notes="지난주 복습 1분. &quot;오늘은 만든 걸 남에게 보여주는 날&quot;. QR로 슬라이드 주소를 먼저 열어 두게 하면 9장에서 실습 파일을 바로 내려받을 수 있음.">
+      <div class="cover-text">
+        <p class="eyebrow">클로드코드 기초 · 2차시</p>
+        <h1>선생님을 위한<br><span class="hl">클로드코드</span> 기초</h1>
+        <p class="lead">2차시 — 내 웹페이지를 인터넷에</p>
+        <div class="meta">
+          <span>유경윤</span><span class="sep"></span>
+          <span>2026년 10월 23일</span><span class="sep"></span>
+          <span class="brand">DeepVibe</span>
+        </div>
+        <div class="cover-qr">
+          <div class="placeholder qr" data-img="lesson2-qr.png">QR</div>
+          <span class="small">이 슬라이드 주소<br>휴대폰·노트북으로 열어 두세요</span>
+        </div>
+      </div>
+      <div class="mock" aria-hidden="true">
+        <div class="term-head"><span class="dots"><i></i><i></i><i></i></span><span class="term-label">PowerShell — guestbook</span></div>
+        <div class="mock-body">
+          <div><span class="p">PS C:\…\Desktop\guestbook&gt;</span> <span class="hlc">claude</span></div>
+          <div class="mock-box">✻ Welcome to Claude Code!<br><span class="p">cwd: …\Desktop\guestbook</span></div>
+          <div class="you">&gt; 이 페이지를 인터넷에 올려줘</div>
+          <div class="cl">● 좋아요. 먼저 GitHub에</div>
+          <div class="cl">&nbsp;&nbsp;올려 볼게요.</div>
+          <div class="you" style="margin-top:12px">&gt; <span class="cursor"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- #2 -->
+    <section class="slide bullets" data-part="1부 · 오리엔테이션" data-title="오늘 끝나면 이렇게 됩니다"
+      data-notes="강사의 완성본 주소를 QR로 띄워 수강생이 직접 글을 써 보게 하기. 오늘의 도착점을 먼저 체험시키는 장.">
+      <p class="eyebrow">오늘의 도착점</p>
+      <h2>오늘 끝나면 이렇게 됩니다</h2>
+      <div class="body">
+        <ul class="list num">
+          <li>내 웹페이지 주소를 <b>카톡으로 보낼 수 있다</b></li>
+          <li>휴대폰으로 열린다</li>
+          <li>누가 글을 쓰면 <b class="hl">모두의 화면에</b> 보인다</li>
+          <li>고치고 싶으면 Claude에게 말하고 → 푸시 → <b>1분 뒤 반영</b></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- #3 -->
+    <section class="slide table" data-part="1부 · 오리엔테이션" data-title="오늘 등장하는 세 친구"
+      data-notes="이 비유를 수업 내내 반복. &quot;지금은 보관소 단계예요&quot; 식으로.">
+      <p class="eyebrow">오늘의 등장인물</p>
+      <h2>오늘 등장하는 세 친구</h2>
+      <div class="body" style="gap:28px">
+        <table class="tbl">
+          <thead><tr><th>서비스</th><th>비유</th><th>하는 일</th></tr></thead>
+          <tbody>
+            <tr><td class="cmdcell"><code>GitHub</code></td><td><b>보관소</b></td><td>내 파일과 수정 기록 보관</td></tr>
+            <tr><td class="cmdcell"><code>Vercel</code></td><td><b>가게</b></td><td>파일을 인터넷 주소로 진열</td></tr>
+            <tr><td class="cmdcell"><code>Supabase</code></td><td><b>공책</b></td><td>방문자가 쓴 글을 모아 둠</td></tr>
+          </tbody>
+        </table>
+        <div class="tip line" style="text-align:center">내 컴퓨터 → <b class="hl">보관소</b> → <b class="hl">가게</b> → 손님이 쓴 글은 <b class="hl">공책</b>에</div>
+      </div>
+    </section>
+
+    <!-- #4 -->
+    <section class="slide table" data-part="1부 · 오리엔테이션" data-title="오늘 시간표"
+      data-notes="쉬는 시간 직전에 Supabase 프로젝트 만들기 버튼만 눌러 두는 게 포인트.">
+      <p class="eyebrow">전체 그림</p>
+      <h2>오늘 시간표 <span class="muted" style="font-size:48px">(120분)</span></h2>
+      <div class="body" style="gap:22px">
+        <div class="timetable">
+          <div><span>1부</span><span>오리엔테이션 + 준비 확인</span><span>10분</span></div>
+          <div><span>2부</span><span>실습 페이지 받고 고치기</span><span>20분</span></div>
+          <div class="now"><span>3부</span><span>GitHub에 올리기 — 보관소</span><span>25분</span></div>
+          <div class="now"><span>4부</span><span>Vercel로 인터넷에 열기 — 가게</span><span>15분</span></div>
+          <div><span>5부</span><span>고치고 푸시 → 자동 반영</span><span>10분</span></div>
+          <div><span>—</span><span>쉬는 시간</span><span>5분</span></div>
+          <div class="now"><span>6부</span><span>Supabase로 글 저장하기 — 공책</span><span>30분</span></div>
+          <div><span>7부</span><span>마무리</span><span>5분</span></div>
+        </div>
+        <p class="small">시간이 남으면 <b>심화</b>: 오늘 손으로 한 일을 Claude에게 전부 맡기기</p>
+      </div>
+    </section>
+
+    <!-- #5 -->
+    <section class="slide checkpoint" data-part="1부 · 오리엔테이션" data-title="준비 확인 ① 계정 3개"
+      data-notes="사전 과제로 안내했던 부분. 가입이 안 된 분은 보조강사가 지원. Vercel 가입 시 &quot;Hobby&quot; 선택.">
+      <span class="badge">✋ 준비 확인 ①</span>
+      <h2>계정 3개 로그인 되나요?</h2>
+      <div class="body">
+        <ul class="list check">
+          <li><b>github.com</b> 로그인 됨</li>
+          <li><b>vercel.com</b> 로그인 됨 <span class="muted">— Continue with GitHub로 가입</span></li>
+          <li><b>supabase.com</b> 로그인 됨 <span class="muted">— Continue with GitHub로 가입</span></li>
+        </ul>
+        <div class="tip">안 된 분: <b>지금 가입.</b> Vercel·Supabase는 <b class="hl">GitHub 버튼 하나</b>로 끝</div>
+      </div>
+    </section>
+
+    <!-- #6 -->
+    <section class="slide command" data-part="1부 · 오리엔테이션" data-title="준비 확인 ② 도구 확인"
+      data-notes="사전 안내 메일로 gh 설치를 부탁했더라도 절반은 안 되어 있다고 가정.">
+      <p class="eyebrow">준비 확인 ②</p>
+      <h2>도구 확인</h2>
+      <div class="body">
+        <div class="term md">
+          <div class="term-head"><span class="dots"><i></i><i></i><i></i></span><span class="term-label">PowerShell — 한 줄씩</span><button class="copy-btn" type="button">복사</button></div>
+          <pre><code>git --version
+gh --version
+claude --version</code></pre>
+        </div>
+        <div class="ok-row"><span class="tag">OK</span><span>세 줄 모두 버전 숫자가 나오면 통과</span></div>
+        <div class="ok-row"><span class="tag bad">오류</span><span><code class="c">gh</code>를 찾을 수 없음 → <b>다음 부에서 설치</b></span></div>
+      </div>
+    </section>
+
+<!-- =============================== 2부. 실습 페이지 =============================== -->
+
+    <!-- #7 -->
+    <section class="slide section" data-part="2부 · 실습 페이지 받고 고치기" data-title="2부. 실습 페이지 받기"
+      data-notes="20분. 지난주 설계서는 오늘 과정을 익힌 뒤 과제로 적용.">
+      <span class="time">20분</span>
+      <div class="pnum">2</div>
+      <p class="plabel">2부</p>
+      <h2>실습 페이지 받기</h2>
+      <p class="lead">“오늘은 연습용 페이지로 한 바퀴. 내 설계서는 과제로”</p>
+    </section>
+
+    <!-- #8 -->
+    <section class="slide command" data-part="2부 · 실습 페이지 받고 고치기" data-title="GitHub CLI 설치"
+      data-notes="winget이 없다는 오류가 나면 cli.github.com에서 Windows 설치 파일(.msi) 다운로드.">
+      <p class="eyebrow">2부 · 아직 없는 분만</p>
+      <h2>GitHub CLI 설치</h2>
+      <div class="body">
+        <div class="term md">
+          <div class="term-head"><span class="dots"><i></i><i></i><i></i></span><span class="term-label">PowerShell</span><button class="copy-btn" type="button">복사</button></div>
+          <pre><code>winget install --id GitHub.cli</code></pre>
+        </div>
+        <div class="ok-row"><span class="tag">1</span><span>설치 후 <b>VS Code 완전히 껐다 켜기</b> <span class="muted">(안 그러면 gh를 못 찾음)</span></span></div>
+        <div class="ok-row"><span class="tag">2</span><span>다시 <code class="c">gh --version</code>으로 확인</span></div>
+        <p class="small">Mac은 <code class="c">brew install gh</code> (brew가 없으면 cli.github.com에서 설치 파일)</p>
+      </div>
+    </section>
+
+    <!-- #9 -->
+    <section class="slide command" data-part="2부 · 실습 페이지 받고 고치기" data-title="실습 페이지 내려받기"
+      data-notes="ZIP 안에는 파일이 바로 들어 있어서(폴더 없이) &quot;모두 압축 풀기&quot;만 하면 guestbook\파일들 구조가 됨. 압축을 안 풀고 ZIP 안에서 바로 열면 수정이 저장되지 않으니 꼭 풀기.">
+      <p class="eyebrow">2부 · 실습 파일</p>
+      <h2>실습 페이지 내려받기</h2>
+      <div class="body" style="flex-direction:row; gap:56px; align-items:flex-start">
+        <div style="flex:1; display:flex; flex-direction:column; gap:30px">
+          <a class="dl-btn" href="downloads/guestbook.zip" download>⬇ guestbook.zip 내려받기</a>
+          <ul class="list num sm">
+            <li>내려받은 ZIP을 <b>바탕화면</b>으로 옮기기</li>
+            <li>오른쪽 클릭 → <b>모두 압축 풀기</b> → <code class="c">guestbook</code> 폴더 생성</li>
+            <li>안에 <code class="c">index.html</code> <code class="c">style.css</code> <code class="c">app.js</code> <code class="c">config.js</code> 4개가 보이면 OK</li>
+          </ul>
+          <p class="small"><code class="c">.gitignore</code> 파일도 있어요. 건드리지 않기</p>
+        </div>
+        <div class="qr-box">
+          <div class="placeholder qr" data-img="lesson2-qr.png">QR</div>
+          <span class="small">강사 화면만 보고 있다면<br>QR로 접속해서 내려받기</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- #10 -->
+    <section class="slide command" data-part="2부 · 실습 페이지 받고 고치기" data-title="폴더 열고 Claude 켜기"
+      data-notes="지난주 myapp이 아니라 guestbook 폴더를 여는지 확인.">
+      <p class="eyebrow">2부 · 시작</p>
+      <h2>폴더 열고 Claude 켜기</h2>
+      <div class="body">
+        <div class="steps-inline" style="font-size:38px">VS Code <span class="arrow">→</span> <b>파일 &gt; 폴더 열기</b> <span class="arrow">→</span> <code class="c">guestbook</code> <span class="arrow">→</span> 신뢰 <span class="arrow">→</span> 터미널 <span class="key">Ctrl + `</span></div>
+        <div class="term">
+          <div class="term-head"><span class="dots"><i></i><i></i><i></i></span><span class="term-label">PowerShell</span><button class="copy-btn" type="button">복사</button></div>
+          <pre><code>claude</code></pre>
+        </div>
+        <div class="tip">지난주와 다른 폴더라 <b>폴더 신뢰 질문</b>이 다시 나와요 → <b class="hl">Yes</b></div>
+      </div>
+    </section>
+
+    <!-- #11 -->
+    <section class="slide checkpoint" data-part="2부 · 실습 페이지 받고 고치기" data-title="먼저 구경하기"
+      data-notes="지금은 브라우저 저장소(localStorage)에 저장되는 상태. &quot;내 컴퓨터 서랍에만 넣어 둔 것&quot;이라고 설명. 이 궁금증이 6부의 동기.">
+      <span class="badge">✋ 따라 하기</span>
+      <h2>먼저 구경하기</h2>
+      <div class="body" style="gap:28px">
+        <ul class="list sm">
+          <li>탐색기에서 <code class="c">index.html</code> <b>더블클릭</b> → 글 하나 써 보기</li>
+          <li>새로고침해도 남아 있음. 그런데 <b class="hl">옆 사람 화면에는 안 보임</b> → 왜일까? <span class="muted">(6부에서 해결)</span></li>
+        </ul>
+        <div class="term md ask">
+          <div class="term-head"><span class="dots"><i></i><i></i><i></i></span><span class="term-label">Claude에게 입력</span><button class="copy-btn" type="button">복사</button></div>
+          <pre><code>이 폴더의 파일들이 각각 무슨 일을 하는지 초등 교사가 알기 쉽게 설명해줘</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- #12 -->
+    <section class="slide command" data-part="2부 · 실습 페이지 받고 고치기" data-title="내 스타일로 고치기"
+      data-notes="1차시의 요청문 3원칙(목적·대상·제약) 복습. frontend-design 스킬이 자동 적용되는 걸 체감하는 순간.">
+      <p class="eyebrow">2부 · 고치기</p>
+      <h2>내 스타일로 고치기</h2>
+      <div class="body" style="gap:30px">
+        <div class="term md ask">
+          <div class="term-head"><span class="dots"><i></i><i></i><i></i></span><span class="term-label">Claude에게 입력 — 내 문장으로 바꿔도 OK</span><button class="copy-btn" type="button">복사</button></div>
+          <pre><code>페이지 제목을 "<span class="fill">4학년 2반</span> 오늘의 한 줄"로 바꾸고, 전체 색을 따뜻한 파스텔 톤으로 바꿔줘</code></pre>
+        </div>
+        <p style="font-size:36px"><span class="muted">다른 예:</span> “글마다 이모지 기분 버튼을 추가해줘” / “글자 크기를 크게 해줘”</p>
+        <div class="tip">바뀌면 브라우저에서 <span class="key">F5</span> <b>새로고침</b>해서 확인</div>
+      </div>
+    </section>
+
+    <!-- #13 -->
+    <section class="slide bullets" data-part="2부 · 실습 페이지 받고 고치기" data-title="고칠 때 약속 3가지"
+      data-notes="세 번째 약속(되돌리기)이 다음 부의 커밋 개념으로 이어짐.">
+      <p class="eyebrow">2부 · 습관</p>
+      <h2>고칠 때 약속 3가지</h2>
+      <div class="body">
+        <ul class="list num">
+          <li>한 번에 <b>하나씩</b> 고치기</li>
+          <li>고치면 <b>바로 브라우저로 확인</b></li>
+          <li>망가지면: <b class="hl">“방금 바꾼 거 되돌려줘”</b></li>
+        </ul>
+        <div class="tip line">이 약속은 다음 부의 <b>“저장 기록(커밋)”</b>과 연결돼요</div>
+      </div>
+    </section>
+
+<!-- =============================== 3부. GitHub =============================== -->
+
+    <!-- #14 -->
+    <section class="slide section" data-part="3부 · GitHub에 올리기" data-title="3부. 보관소에 올리기"
+      data-notes="25분. 오늘 가장 많이 막히는 부. 로그인 단계에서 천천히.">
+      <span class="time">25분</span>
+      <div class="pnum">3</div>
+      <p class="plabel">3부</p>
+      <h2>보관소에 올리기</h2>
+      <p class="lead">“GitHub = 내 파일 보관소”</p>
+    </section>
+
+    <!-- #15 -->
+    <section class="slide twocol" data-part="3부 · GitHub에 올리기" data-title="커밋과 푸시"
+      data-notes="단어가 낯설 뿐 개념은 쉽다는 분위기. 오늘 외울 단어는 이 두 개.">
+      <p class="eyebrow">오늘 외울 단어 2개</p>
+      <h2>커밋과 푸시</h2>
+      <div class="body">
+        <div class="cols">
+          <div class="tile">
+            <span class="vs-tag">커밋 commit</span>
+            <ul class="tlist">
+              <li><b>내 컴퓨터 안에</b> 저장 기록을 남김</li>
+              <li>게임의 <b>세이브 포인트</b></li>
+            </ul>
+          </div>
+          <div class="tile dark">
+            <span class="vs-tag">푸시 push</span>
+            <ul class="tlist">
+              <li>그 기록을 <b>GitHub 보관소로</b> 보냄</li>
+              <li>세이브 파일을 <b>클라우드에 업로드</b></li>
+            </ul>
+          </div>
+        </div>
+        <div class="tip line" style="text-align:center"><b>한 줄 요약 —</b> <b class="hl">커밋 = 저장, 푸시 = 업로드</b></div>
+      </div>
+    </section>
+
+    <!-- #16 -->
+    <section class="slide command" data-part="3부 · GitHub에 올리기" data-title="① 내 이름표 달기"
+      data-notes="Claude 대화창이 아니라 터미널에서 입력. Claude 안에 있다면 터미널을 하나 더 열거나(+ 버튼), Claude에게 &quot;내 git 이름을 홍길동, 이메일을 ○○로 설정해줘&quot;라고 시켜도 됨.">
+      <p class="eyebrow">3부 · 단계 ① · 처음 한 번만</p>
+      <h2>내 이름표 달기</h2>
+      <div class="body" style="gap:28px">
+        <div class="term sm">
+          <div class="term-head"><span class="dots"><i></i><i></i><i></i></span><span class="term-label">PowerShell — 노란 글자를 내 것으로 바꿔서 한 줄씩</span><button class="copy-btn" type="button">복사</button></div>
+          <pre><code>git config --global user.name "<span class="fill">홍길동</span>"
+git config --global user.email "<span class="fill">GitHub가입이메일@example.com</span>"
+git config --global init.defaultBranch main</code></pre>
+        </div>
+        <div class="ok-row"><span class="tag">이메일</span><span><b>GitHub에 가입한 이메일</b>과 같게 넣어야 내 계정과 연결돼요</span></div>
+        <div class="tip warn" style="padding:24px 36px; font-size:34px"><span class="emoji">⚠️</span> 이걸 안 하면 <b>첫 커밋에서 오류</b>가 나요</div>
+      </div>
+    </section>
+
+    <!-- #17 -->
+    <section class="slide command" data-part="3부 · GitHub에 올리기" data-title="② GitHub 로그인"
+      data-notes="오늘 가장 많이 막히는 장. 이 명령은 대화형이라 반드시 일반 터미널에서 실행(Claude 안에서 X). 화면 캡처 img/lesson2-gh-1.png ~ -3.png를 넣으면 자동 표시.">
+      <p class="eyebrow">3부 · 단계 ②</p>
+      <h2>GitHub 로그인</h2>
+      <div class="body" style="flex-direction:row; gap:48px; align-items:stretch">
+        <div style="flex:1; display:flex; flex-direction:column; gap:28px">
+          <div class="term">
+            <div class="term-head"><span class="dots"><i></i><i></i><i></i></span><span class="term-label">PowerShell</span><button class="copy-btn" type="button">복사</button></div>
+            <pre><code>gh auth login</code></pre>
+          </div>
+          <ul class="list num sm">
+            <li><b>GitHub.com</b> → <b>HTTPS</b> → <b>Y</b> → <b>Login with a web browser</b></li>
+            <li>화면의 <b class="hl">8자리 코드</b> 복사</li>
+            <li>브라우저에 붙여넣기 → <b>Authorize</b></li>
+          </ul>
+        </div>
+        <div style="flex:0 0 620px; display:grid; grid-template-rows:repeat(3,1fr); gap:16px">
+          <div class="placeholder" data-img="lesson2-gh-1.png" style="font-size:26px">스크린샷: 선택 화면</div>
+          <div class="placeholder" data-img="lesson2-gh-2.png" style="font-size:26px">스크린샷: 8자리 코드</div>
+          <div class="placeholder" data-img="lesson2-gh-3.png" style="font-size:26px">스크린샷: Authorize</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- #18 -->
+    <section class="slide command" data-part="3부 · GitHub에 올리기" data-title="로그인 확인"
+      data-notes="안 되면 gh auth login 다시. 계정이 여러 개라면 맞는 계정인지 확인.">
+      <p class="eyebrow">3부 · 확인</p>
+      <h2>로그인 확인</h2>
+      <div class="body">
+        <div class="term">
+          <div class="term-head"><span class="dots"><i></i><i></i><i></i></span><span class="term-label">PowerShell</span><button class="copy-btn" type="button">복사</button></div>
+          <pre><code>gh auth status</code></pre>
+        </div>
+        <div class="ok-row"><span class="tag">OK</span><span><code class="c">Logged in to github.com account ○○</code> 가 나오면 성공</span></div>
+      </div>
+    </section>
+
+    <!-- #19 -->
+    <section class="slide checkpoint" data-part="3부 · GitHub에 올리기" data-title="③ Claude에게 올려 달라고 하기"
+      data-notes="비공개(private)로 만드는 이유: 학교·학급 정보가 들어갈 수 있음. Vercel은 비공개 저장소도 무료로 배포 가능.">
+      <span class="badge">✋ 따라 하기 · 단계 ③</span>
+      <h2>Claude에게 올려 달라고 하기</h2>
+      <div class="body" style="gap:28px">
+        <div class="term md ask">
+          <div class="term-head"><span class="dots"><i></i><i></i><i></i></span><span class="term-label">Claude에게 입력</span><button class="copy-btn" type="button">복사</button></div>
+          <pre><code>이 폴더를 git으로 관리하고, 첫 커밋을 만든 다음, 내 GitHub에 guestbook이라는 비공개 저장소를 만들어서 푸시해줘</code></pre>
+        </div>
+        <p style="font-size:36px">명령을 실행하려 할 때마다 허락 → <b>Yes</b></p>
+        <div class="success"><span class="emoji">🎉</span><span>Claude가 알려 준 주소를 열어 <b>내 파일 4개</b>가 보이면 성공</span></div>
+      </div>
+    </section>
+
+    <!-- #20 -->
+    <section class="slide table" data-part="3부 · GitHub에 올리기" data-title="Claude가 방금 한 일"
+      data-notes="Claude의 실제 명령은 조금 다를 수 있음(--source=. --push 옵션으로 한 번에 처리 등). 개념만 짚기.">
+      <p class="eyebrow">구경만 하세요</p>
+      <h2>Claude가 방금 한 일</h2>
+      <div class="body" style="margin-top:32px; gap:20px">
+        <table class="tbl" style="font-size:34px; border-spacing:0 10px">
+          <tbody>
+            <tr><td class="cmdcell" style="width:640px"><code style="font-size:36px">git init</code></td><td>이 폴더를 기록 관리 시작</td></tr>
+            <tr><td class="cmdcell"><code style="font-size:36px">git add .</code></td><td>저장할 파일 고르기 (전부)</td></tr>
+            <tr><td class="cmdcell"><code style="font-size:36px">git commit -m "..."</code></td><td>저장 기록 남기기 <span class="muted">(커밋)</span></td></tr>
+            <tr><td class="cmdcell"><code style="font-size:36px">gh repo create --private</code></td><td>GitHub에 비공개 보관소 만들기</td></tr>
+            <tr><td class="cmdcell"><code style="font-size:36px">git push</code></td><td>보관소로 업로드 <span class="muted">(푸시)</span></td></tr>
+          </tbody>
+        </table>
+        <div class="tip line" style="text-align:center; padding:22px 40px"><b>외울 필요 없음.</b> <b class="hl">“커밋하고 푸시해줘”</b>라고 말하면 됨</div>
+      </div>
+    </section>
+
+    <!-- #21 -->
+    <section class="slide trouble" data-part="3부 · GitHub에 올리기" data-title="막혔을 때 — GitHub 편"
+      data-notes="위에서부터 빈도순.">
+      <p class="eyebrow">트러블슈팅</p>
+      <h2>막혔을 때 — GitHub 편</h2>
+      <div class="body" style="margin-top:28px">
+        <table class="tbl">
+          <thead><tr><th>증상</th><th>원인</th><th>해결</th></tr></thead>
+          <tbody>
+            <tr><td><code>gh</code>를 찾을 수 없음</td><td>설치 후 창을 안 껐음</td><td>VS Code 완전 종료 후 재실행</td></tr>
+            <tr><td><code>Please tell me who you are</code></td><td>이름표 미설정</td><td>16장 명령 다시</td></tr>
+            <tr><td>코드 입력 화면이 안 열림</td><td>브라우저 연동</td><td><b>github.com/login/device</b> 직접 열기</td></tr>
+            <tr><td><code>already exists</code></td><td>같은 이름 저장소</td><td>이름을 <code>guestbook2</code>로 바꿔 요청</td></tr>
+            <tr><td>푸시할 때 로그인 창 반복</td><td>인증 정보 꼬임</td><td>
+              <div class="inline-cmd"><code>gh auth setup-git</code><button class="copy-btn" type="button">복사</button></div>
+              후 재시도</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- #22 -->
+    <section class="slide checkpoint" data-part="3부 · GitHub에 올리기" data-title="확인 미션 3"
+      data-notes="완료한 분이 옆 사람을 돕게 해서 강사 부담을 분산.">
+      <span class="badge">✋ 확인 미션 3</span>
+      <h2>내 보관소 확인하기</h2>
+      <div class="body">
+        <ul class="list check">
+          <li>github.com → 내 프로필 → <code class="c">guestbook</code> 저장소</li>
+          <li>이름 옆에 <b class="hl">Private</b> 표시가 있는지</li>
+          <li>파일을 눌러 내용이 보이는지</li>
+        </ul>
+        <p style="font-size:36px" class="muted">완료한 분은 옆 사람 도와주기</p>
+      </div>
+    </section>
+
+<!-- =============================== 4부. Vercel =============================== -->
+
+    <!-- #23 -->
+    <section class="slide section" data-part="4부 · Vercel로 인터넷에 열기" data-title="4부. 가게 열기"
+      data-notes="15분. 클릭만으로 끝나는 부. 휴대폰으로 여는 순간을 충분히 즐기게.">
+      <span class="time">15분</span>
+      <div class="pnum">4</div>
+      <p class="plabel">4부</p>
+      <h2>가게 열기</h2>
+      <p class="lead">“Vercel = 보관소의 파일을 인터넷 주소로 진열”</p>
+    </section>
+
+    <!-- #24 -->
+    <section class="slide command" data-part="4부 · Vercel로 인터넷에 열기" data-title="① 새 프로젝트 만들기"
+      data-notes="화면 캡처 img/lesson2-vercel-import.png를 넣으면 자동 표시.">
+      <p class="eyebrow">4부 · 단계 ①</p>
+      <h2>새 프로젝트 만들기</h2>
+      <div class="body" style="gap:28px">
+        <div class="steps-inline" style="font-size:38px"><b>vercel.com</b> <span class="arrow">→</span> 오른쪽 위 <b>Add New…</b> <span class="arrow">→</span> <b>Project</b> <span class="arrow">→</span> <code class="c">guestbook</code> 옆 <b>Import</b></div>
+        <div class="placeholder" data-img="lesson2-vercel-import.png" style="flex:1">스크린샷: Vercel Import Git Repository 화면</div>
+        <div class="tip" style="padding:22px 36px; font-size:34px"><code class="c">guestbook</code>이 목록에 없으면 → <b>다음 장</b></div>
+      </div>
+    </section>
+
+    <!-- #25 -->
+    <section class="slide bullets" data-part="4부 · Vercel로 인터넷에 열기" data-title="저장소가 안 보일 때"
+      data-notes="비공개 저장소라서 생기는 단계. 가장 흔한 막힘 2위.">
+      <p class="eyebrow">4부 · 막혔을 때</p>
+      <h2>저장소가 안 보일 때</h2>
+      <div class="body">
+        <div class="tip">Vercel에게 <b>“내 보관소를 봐도 된다”</b>는 허락이 필요해요</div>
+        <ul class="list num sm">
+          <li><b>Adjust GitHub App Permissions</b> 클릭 → GitHub 화면으로 이동</li>
+          <li>Repository access에서 <b>All repositories</b> 또는 <code class="c">guestbook</code> 선택 → <b>Save</b></li>
+          <li>Vercel 화면으로 돌아오면 목록에 나타남</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- #26 -->
+    <section class="slide command" data-part="4부 · Vercel로 인터넷에 열기" data-title="② 설정 없이 Deploy"
+      data-notes="빌드 과정이 없는 순수 HTML이라 설정이 필요 없음. 이게 순수 HTML을 고른 이유.">
+      <p class="eyebrow">4부 · 단계 ②</p>
+      <h2>설정 없이 Deploy</h2>
+      <div class="body">
+        <ul class="list num">
+          <li>Framework Preset: <b>Other</b> <span class="muted">(자동으로 잡힘)</span></li>
+          <li>Build 설정, 환경 변수: <b class="hl">아무것도 건드리지 않기</b></li>
+          <li><b>Deploy</b> 클릭 → 30초~1분 기다리기</li>
+          <li>축하 화면이 나오면 <b>Continue to Dashboard</b></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- #27 -->
+    <section class="slide checkpoint" data-part="4부 · Vercel로 인터넷에 열기" data-title="확인 미션 4 — 휴대폰으로 열기"
+      data-notes="수업에서 가장 반응이 큰 순간. 충분히 즐기게 둘 것. 주소가 마음에 안 들면 Settings → Domains에서 앞부분 변경 가능(안내만).">
+      <span class="badge">✋ 확인 미션 4</span>
+      <h2>휴대폰으로 열기 <span class="emoji">📱</span></h2>
+      <div class="body">
+        <ul class="list num">
+          <li>대시보드의 <b>Domains</b> 주소 클릭 <span class="muted">— </span><code class="c">guestbook-○○.vercel.app</code></li>
+          <li>그 주소를 <b>카톡 나에게 보내기</b> → 휴대폰에서 열기</li>
+          <li>옆 사람 주소도 열어 보기</li>
+        </ul>
+        <div class="success"><span class="emoji">🎉</span><span>휴대폰에서 내 페이지가 열리면 <b class="hl">인터넷에 올리기 성공</b></span></div>
+      </div>
+    </section>
+
+    <!-- #28 -->
+    <section class="slide twocol" data-part="4부 · Vercel로 인터넷에 열기" data-title="그런데 이상한 점"
+      data-notes="11장의 궁금증을 다시 꺼내 6부의 동기를 강화.">
+      <p class="eyebrow">잠깐, 이상하지 않나요?</p>
+      <h2>그런데 이상한 점</h2>
+      <div class="body">
+        <div class="cols">
+          <div class="tile">
+            <span class="vs-tag">내 휴대폰에서</span>
+            <div class="t-title" style="margin-top:28px">글을 쓰면 <b class="hl">보임</b></div>
+          </div>
+          <div class="tile dark">
+            <span class="vs-tag">옆 사람 휴대폰에서</span>
+            <div class="t-title" style="margin-top:28px">내 글이 <b class="hl">안 보임</b></div>
+          </div>
+        </div>
+        <div class="tip">이유: 글이 아직 <b>각자의 브라우저 서랍</b>에만 저장됨 → 모두가 같이 쓰는 <b class="hl">공책(Supabase)</b>이 필요</div>
+      </div>
+    </section>
+
+<!-- =============================== 5부. 자동 반영 =============================== -->
+
+    <!-- #29 -->
+    <section class="slide section" data-part="5부 · 고치고 푸시 → 자동 반영" data-title="5부. 고치면 저절로 바뀐다"
+      data-notes="10분. 앞으로 계속 쓸 기본 루프를 몸으로 익히는 부.">
+      <span class="time">10분</span>
+      <div class="pnum">5</div>
+      <p class="plabel">5부</p>
+      <h2>고치면 저절로 바뀐다</h2>
+      <p class="lead">푸시만 하면 가게 진열도 바뀌어요</p>
+    </section>
+
+    <!-- #30 -->
+    <section class="slide checkpoint" data-part="5부 · 고치고 푸시 → 자동 반영" data-title="한 바퀴 돌려 보기"
+      data-notes="Vercel 대시보드의 Deployments 탭에서 새 배포가 진행되는 모습도 같이 보여 주기.">
+      <span class="badge">✋ 따라 하기</span>
+      <h2>한 바퀴 돌려 보기</h2>
+      <div class="body" style="gap:24px">
+        <div class="term sm ask">
+          <div class="term-head"><span class="dots"><i></i><i></i><i></i></span><span class="term-label">① Claude에게 입력 — 내용은 자유</span><button class="copy-btn" type="button">복사</button></div>
+          <pre><code>맨 아래에 "만든 사람: <span class="fill">○○○</span> 선생님" 문구를 넣어줘</code></pre>
+        </div>
+        <div class="term sm ask">
+          <div class="term-head"><span class="dots"><i></i><i></i><i></i></span><span class="term-label">② 브라우저에서 확인한 다음</span><button class="copy-btn" type="button">복사</button></div>
+          <pre><code>지금 바꾼 걸 커밋하고 푸시해줘</code></pre>
+        </div>
+        <div class="success"><span class="emoji">🎉</span><span>1분 뒤 <b>휴대폰에서 새로고침</b> → 바뀌어 있으면 성공</span></div>
+      </div>
+    </section>
+
+    <!-- #31 -->
+    <section class="slide bullets" data-part="5부 · 고치고 푸시 → 자동 반영" data-title="앞으로의 작업 순서"
+      data-notes="이 네 단계를 마무리에서 한 번 더 반복.">
+      <p class="eyebrow">이것만 기억</p>
+      <h2>앞으로의 작업 순서</h2>
+      <div class="body">
+        <ul class="list num">
+          <li>Claude에게 <b>고쳐 달라고 말하기</b></li>
+          <li>브라우저에서 <b>확인</b></li>
+          <li><b class="hl">“커밋하고 푸시해줘”</b></li>
+          <li>1분 뒤 인터넷 주소에 <b>반영</b></li>
+        </ul>
+        <div class="tip line">이 네 단계가 <b>앞으로 모든 작업의 기본 루프</b></div>
+      </div>
+    </section>
+
+    <!-- #32 -->
+    <section class="slide checkpoint" data-part="쉬는 시간" data-title="쉬는 시간 — 그 전에 버튼 하나만"
+      data-notes="대기 시간을 쉬는 시간과 겹치려는 장. 비밀번호는 오늘 실습에선 안 쓰지만 나중을 위해 보관. 무료 플랜은 프로젝트 2개까지.">
+      <span class="badge">☕ 쉬는 시간 5분 — 그 전에 버튼 하나만</span>
+      <h2>Supabase 프로젝트 만들기</h2>
+      <div class="body" style="gap:26px">
+        <div class="steps-inline" style="font-size:38px"><b>supabase.com</b> <span class="arrow">→</span> <b>New project</b></div>
+        <ul class="list sm">
+          <li>Name: <code class="c">guestbook</code></li>
+          <li>Database Password: <b>Generate a password</b> → <b class="hl">메모장에 복사해 두기</b></li>
+          <li>Region: <b>Northeast Asia (Seoul)</b></li>
+        </ul>
+        <div class="success"><span class="emoji">☕</span><span><b>Create new project</b> 누르고 쉬는 시간 시작 — 준비에 1~2분, 쉬는 동안 완료돼요</span></div>
+      </div>
+    </section>
+
+<!-- =============================== 6부. Supabase =============================== -->
+
+    <!-- #33 -->
+    <section class="slide section" data-part="6부 · Supabase로 글 저장하기" data-title="6부. 모두의 공책 만들기"
+      data-notes="30분. 오늘 가장 어려운 부. 막히는 분이 많으면 강사 화면으로 시연하고 따라오게.">
+      <span class="time">30분</span>
+      <div class="pnum">6</div>
+      <p class="plabel">6부</p>
+      <h2>모두의 공책 만들기</h2>
+      <p class="lead">“Supabase = 방문자가 쓴 글을 모아 두는 공책”</p>
+    </section>
+
+    <!-- #34 -->
+    <section class="slide twocol" data-part="6부 · Supabase로 글 저장하기" data-title="지금 vs 바꾼 후"
+      data-notes="실습 페이지는 저장 부분이 app.js 맨 위 두 함수(loadEntries, saveEntry)에 모여 있어서 교체가 쉬움.">
+      <p class="eyebrow">무엇이 바뀌나요?</p>
+      <h2>지금 vs 바꾼 후</h2>
+      <div class="body">
+        <div class="cols">
+          <div class="tile">
+            <span class="vs-tag">지금</span>
+            <ul class="tlist">
+              <li>글 → <b>내 브라우저 서랍</b></li>
+              <li>나만 봄</li>
+            </ul>
+          </div>
+          <div class="tile dark">
+            <span class="vs-tag">바꾼 후</span>
+            <ul class="tlist">
+              <li>글 → <b>Supabase 공책</b></li>
+              <li>모두가 봄</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tip">바꿀 파일: <code class="c">app.js</code> <span class="muted">(저장 방식)</span> · <code class="c">config.js</code> <span class="muted">(공책 주소)</span></div>
+      </div>
+    </section>
+
+    <!-- #35 -->
+    <section class="slide command" data-part="6부 · Supabase로 글 저장하기" data-title="① 표(테이블) 설계 받기"
+      data-notes="핵심은 &quot;RLS 정책도 넣어줘&quot; 문장. 빠지면 누구나 글을 지울 수 있는 상태가 됨. 강사용 정답 SQL은 명세서 부록 B.">
+      <p class="eyebrow">6부 · 단계 ①</p>
+      <h2>표(테이블) 설계를 Claude에게 받기</h2>
+      <div class="body" style="gap:30px">
+        <div class="term md ask">
+          <div class="term-head"><span class="dots"><i></i><i></i><i></i></span><span class="term-label">Claude에게 입력</span><button class="copy-btn" type="button">복사</button></div>
+          <pre><code>Supabase에 이 방명록 글을 저장할 테이블을 만드는 SQL을 써줘.
+누구나 글을 읽고 쓸 수는 있지만, 수정과 삭제는 못 하게 RLS 정책도 넣어줘.</code></pre>
+        </div>
+        <div class="ok-row"><span class="tag">다음</span><span>Claude가 SQL을 보여주면 <b>전체 복사</b></span></div>
+      </div>
+    </section>
+
+    <!-- #36 -->
+    <section class="slide command" data-part="6부 · Supabase로 글 저장하기" data-title="② SQL Editor에서 실행"
+      data-notes="&quot;destructive operation&quot; 경고가 나오면 내용 확인 후 진행. 표 이름은 Claude가 다르게 지을 수 있음. 화면 캡처 img/lesson2-sql-editor.png를 넣으면 자동 표시.">
+      <p class="eyebrow">6부 · 단계 ②</p>
+      <h2>SQL Editor에 붙여넣고 실행</h2>
+      <div class="body" style="flex-direction:row; gap:48px; align-items:stretch">
+        <div style="flex:1; display:flex; flex-direction:column; gap:28px">
+          <ul class="list num sm">
+            <li>Supabase 왼쪽 메뉴 <b>SQL Editor</b></li>
+            <li>빈 칸에 붙여넣기 → <b>Run</b></li>
+            <li><code class="c">Success. No rows returned</code> 면 성공</li>
+            <li>왼쪽 <b>Table Editor</b>에서 <code class="c">entries</code> 표 확인</li>
+          </ul>
+        </div>
+        <div class="placeholder" data-img="lesson2-sql-editor.png" style="flex:0 0 720px">스크린샷: SQL Editor 화면</div>
+      </div>
+    </section>
+
+    <!-- #37 -->
+    <section class="slide bullets" data-part="6부 · Supabase로 글 저장하기" data-title="RLS — 공책의 자물쇠"
+      data-notes="선생님 대상이라 개인정보 부분을 꼭 강조. 실명 대신 번호·별명.">
+      <p class="eyebrow">6부 · 꼭 알아야 할 것</p>
+      <h2>RLS — 공책의 자물쇠</h2>
+      <div class="body" style="gap:28px">
+        <ul class="list sm">
+          <li>RLS = <b>누가 무엇을 할 수 있는지</b> 정하는 규칙</li>
+          <li>오늘 규칙: 누구나 <b>읽기·쓰기 O</b>, 고치기·지우기 <b>X</b></li>
+          <li>RLS가 꺼져 있으면: 주소만 알면 <b class="hl">누구나 전부 지울 수 있음</b></li>
+          <li>Table Editor에서 표 옆에 <code class="c">RLS disabled</code> 경고가 <b>없어야</b> 정상</li>
+        </ul>
+        <div class="tip warn"><span class="emoji">⚠️</span> <b>학생 실명·연락처 같은 개인정보는 넣지 않기</b></div>
+      </div>
+    </section>
+
+    <!-- #38 -->
+    <section class="slide command" data-part="6부 · Supabase로 글 저장하기" data-title="③ 공책 주소와 열쇠 가져오기"
+      data-notes="Publishable/anon 키는 브라우저에 공개되어도 되는 키. 안전은 RLS가 지킴. secret 키는 모든 규칙을 무시하는 마스터키라 웹페이지에 넣으면 안 됨. Project URL은 Settings → Data API에 있을 수도 있음 — 수업 전 화면 확인.">
+      <p class="eyebrow">6부 · 단계 ③</p>
+      <h2>공책 주소와 열쇠 가져오기</h2>
+      <div class="body" style="gap:28px">
+        <div class="steps-inline" style="font-size:38px">왼쪽 아래 <b>Project Settings</b> <span class="arrow">→</span> <b>API Keys</b></div>
+        <div class="grid g2">
+          <div class="tile"><span class="t-label">주소</span><div class="t-title">Project URL</div><p class="t-text"><code class="c">https://○○.supabase.co</code></p></div>
+          <div class="tile dark"><span class="t-label">열쇠</span><div class="t-title">Publishable key</div><p class="t-text"><code class="c">sb_publishable_…</code><br><span style="font-size:30px">없으면 <b>anon public</b> 키</span></p></div>
+        </div>
+        <div class="tip warn" style="padding:24px 36px; font-size:34px"><span class="emoji">⚠️</span> <b>secret</b> 또는 <b>service_role</b> 키는 <b>절대 복사하지 않기</b></div>
+      </div>
+    </section>
+
+    <!-- #39 -->
+    <section class="slide checkpoint" data-part="6부 · Supabase로 글 저장하기" data-title="④ Claude에게 연결 요청"
+      data-notes="로컬 파일로 열었을 때 안 되면 Claude에게 &quot;브라우저 콘솔 오류를 보고 고쳐줘&quot; 또는 푸시 후 Vercel 주소에서 확인.">
+      <span class="badge">✋ 따라 하기 · 단계 ④</span>
+      <h2>Claude에게 연결 요청</h2>
+      <div class="body" style="gap:22px">
+        <div class="term sm ask">
+          <div class="term-head"><span class="dots"><i></i><i></i><i></i></span><span class="term-label">Claude에게 입력 — 노란 글자 자리에 붙여넣기</span><button class="copy-btn" type="button">복사</button></div>
+          <pre><code>config.js에 Supabase 주소와 publishable key를 넣고, app.js가 브라우저 저장소 대신 Supabase의 entries 테이블에 글을 저장하고 불러오게 바꿔줘.
+주소: <span class="fill">여기에붙여넣기</span>
+키: <span class="fill">여기에붙여넣기</span></code></pre>
+        </div>
+        <p style="font-size:34px">새로고침 → 글 쓰기 → Supabase <b>Table Editor</b>에 그 글이 들어왔는지 확인</p>
+        <div class="ok-row"><span class="tag">잘 되면</span><span><b class="hl">“커밋하고 푸시해줘”</b></span></div>
+      </div>
+    </section>
+
+    <!-- #40 -->
+    <section class="slide checkpoint" data-part="6부 · Supabase로 글 저장하기" data-title="확인 미션 5 — 같이 쓰기"
+      data-notes="28장의 &quot;이상한 점&quot;이 해결되는 순간. 강사 화면에 강사 페이지를 띄우고 다 같이 글을 남기면 좋음.">
+      <span class="badge">✋ 확인 미션 5</span>
+      <h2>같이 쓰기</h2>
+      <div class="body">
+        <ul class="list num">
+          <li>1분 뒤 내 Vercel 주소를 휴대폰에서 열기 → 글 쓰기</li>
+          <li><b>옆 사람 휴대폰</b>에서 내 주소 열기</li>
+          <li>Table Editor에서 글이 쌓이는 것 구경</li>
+        </ul>
+        <div class="success"><span class="emoji">🎉</span><span>옆 사람 화면에 <b class="hl">내 글이 보이면 성공</b></span></div>
+      </div>
+    </section>
+
+    <!-- #41 -->
+    <section class="slide trouble" data-part="6부 · Supabase로 글 저장하기" data-title="막혔을 때 — Vercel · Supabase 편"
+      data-notes="오류 메시지를 Claude에게 그대로 붙여넣는 습관도 같이 강조.">
+      <p class="eyebrow">트러블슈팅</p>
+      <h2>막혔을 때 — Vercel · Supabase 편</h2>
+      <div class="body" style="margin-top:28px">
+        <table class="tbl">
+          <thead><tr><th>증상</th><th>원인</th><th>해결</th></tr></thead>
+          <tbody>
+            <tr><td>Vercel에 저장소가 안 보임</td><td>GitHub 앱 권한</td><td>25장 다시</td></tr>
+            <tr><td>푸시했는데 안 바뀜</td><td>배포 중 / 캐시</td><td>1분 뒤 새로고침, <b>Deployments</b> 탭 확인</td></tr>
+            <tr><td><code>401</code> <code>Invalid API key</code></td><td>키 복사 실수</td><td>키를 다시 복사해서 Claude에게 전달</td></tr>
+            <tr><td><code>violates row-level security</code></td><td>쓰기 정책 없음</td><td>Claude에게 “insert 정책 추가 SQL 써줘”</td></tr>
+            <tr><td>글이 안 불러와짐</td><td>읽기 정책 없음</td><td>Claude에게 “select 정책 추가 SQL 써줘”</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+<!-- =============================== 7부. 마무리 =============================== -->
+
+    <!-- #42 -->
+    <section class="slide bullets" data-part="7부 · 마무리" data-title="오늘 한 것"
+      data-notes="박수 한 번. 시간이 남으면 이어서 심화로.">
+      <p class="eyebrow">7부 · 마무리</p>
+      <h2>오늘 한 것</h2>
+      <div class="body" style="gap:30px">
+        <ul class="list done sm">
+          <li>실습 페이지를 <b>Claude로 고침</b></li>
+          <li>GitHub 비공개 보관소에 <b>커밋·푸시</b></li>
+          <li>Vercel로 <b>인터넷 주소</b> 만들기</li>
+          <li>Supabase 공책으로 <b class="hl">모두의 글 저장</b></li>
+        </ul>
+        <div class="tip dark">기본 루프: <b>말하기 → 확인 → 커밋·푸시 → 반영</b></div>
+      </div>
+    </section>
+
+    <!-- #43 -->
+    <section class="slide bullets" data-part="7부 · 마무리" data-title="다음까지 (과제)"
+      data-notes="과제 결과 주소를 단톡방에 공유하게 하면 서로 자극이 됨.">
+      <p class="eyebrow">7부 · 과제</p>
+      <h2>다음까지</h2>
+      <div class="body">
+        <ul class="list sm">
+          <li>1차시 <b class="hl">내 설계서</b>로 오늘 과정을 그대로 해 보기
+            <span class="sub">새 폴더 → “설계서대로 순수 HTML로 만들어줘” → 커밋·푸시 → Vercel</span></li>
+          <li>내 주소를 <b>단톡방에 공유</b>하기</li>
+          <li>막히면 Claude에게 오류 메시지를 <b>그대로 붙여넣기</b></li>
+          <li>다음 예고: 오늘 손으로 한 일을 <b>Claude에게 전부 맡기는 법</b></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- #44 -->
+    <section class="slide title" data-part="7부 · 마무리" data-title="끝"
+      data-notes="질문 받기. 시간이 남으면 다음 장부터 심화. 수업 후 질문은 아이스톡으로.">
+      <div class="cover-text" style="max-width:none">
+        <p class="eyebrow">2차시 끝 · 수고하셨습니다</p>
+        <h1 style="font-size:132px">작게 만들고,<br><span class="hl">되면 키우자</span></h1>
+        <div class="tip" style="margin-top:72px; display:inline-block; font-size:40px">
+          <span class="muted">질문 · 연락</span>&nbsp;&nbsp;<b>아이스톡으로 부내초 유경윤에게 메세지 주세요</b>
+        </div>
+      </div>
+    </section>
+
+<!-- =============================== 심화 A. Vercel CLI =============================== -->
+
+    <!-- #45 -->
+    <section class="slide section optional" data-part="심화 · 시간이 있으면" data-title="심화 A. Vercel CLI"
+      data-notes="전제: Node.js 설치됨. 없으면 nodejs.org에서 LTS 설치 후 VS Code 재시작.">
+      <span class="time">10분</span>
+      <div class="pnum">A</div>
+      <p class="plabel">심화 A</p>
+      <h2>Vercel CLI</h2>
+      <p class="lead">“CLI = Claude가 내 대신 터미널에 명령을 입력하는 방식”</p>
+    </section>
+
+    <!-- #46 -->
+    <section class="slide command optional" data-part="심화 · 시간이 있으면" data-title="설치와 로그인"
+      data-notes="vercel.ps1 … 스크립트를 실행할 수 없습니다 오류는 1차시 트러블슈팅의 Set-ExecutionPolicy -Scope CurrentUser RemoteSigned로 해결. node를 찾을 수 없으면 Node.js 미설치.">
+      <p class="eyebrow">심화 A · 단계 ①</p>
+      <h2>설치와 로그인</h2>
+      <div class="body" style="gap:26px">
+        <div class="term sm">
+          <div class="term-head"><span class="dots"><i></i><i></i><i></i></span><span class="term-label">PowerShell — 설치</span><button class="copy-btn" type="button">복사</button></div>
+          <pre><code>npm i -g vercel</code></pre>
+        </div>
+        <div class="term sm">
+          <div class="term-head"><span class="dots"><i></i><i></i><i></i></span><span class="term-label">PowerShell — 로그인</span><button class="copy-btn" type="button">복사</button></div>
+          <pre><code>vercel login</code></pre>
+        </div>
+        <p style="font-size:36px">로그인 방법에서 <b>Continue with GitHub</b> → 브라우저에서 허용 <span class="muted">· 확인: </span><code class="c">vercel --version</code></p>
+      </div>
+    </section>
+
+    <!-- #47 -->
+    <section class="slide command optional" data-part="심화 · 시간이 있으면" data-title="이 폴더를 가게와 연결"
+      data-notes=".vercel 폴더는 실습 페이지의 .gitignore에 이미 들어 있어서 커밋되지 않음.">
+      <p class="eyebrow">심화 A · 단계 ②</p>
+      <h2>이 폴더를 가게와 연결</h2>
+      <div class="body">
+        <div class="term">
+          <div class="term-head"><span class="dots"><i></i><i></i><i></i></span><span class="term-label">PowerShell — guestbook 폴더에서</span><button class="copy-btn" type="button">복사</button></div>
+          <pre><code>vercel link</code></pre>
+        </div>
+        <div class="ok-row"><span class="tag">질문</span><span>기존 프로젝트에 연결 → <code class="c">guestbook</code> 선택</span></div>
+        <div class="ok-row"><span class="tag">OK</span><span>폴더에 <code class="c">.vercel</code> 폴더가 생기면 연결 완료</span></div>
+      </div>
+    </section>
+
+    <!-- #48 -->
+    <section class="slide table optional" data-part="심화 · 시간이 있으면" data-title="Claude에게 이렇게 시키기"
+      data-notes="미리보기 주소는 기본적으로 Vercel에 로그인한 사람만 볼 수 있음(본 주소는 누구나). 실제 명령 옵션은 Claude가 상황에 맞게 붙임.">
+      <p class="eyebrow">심화 A · 써 보기</p>
+      <h2>Claude에게 이렇게 시키기</h2>
+      <div class="body" style="margin-top:32px; gap:20px">
+        <table class="tbl" style="font-size:34px">
+          <thead><tr><th>Claude에게 하는 말</th><th>Claude가 쓰는 명령</th><th>결과</th></tr></thead>
+          <tbody>
+            <tr><td>“푸시하기 전에 테스트 주소 만들어줘”</td><td class="cmdcell"><code style="font-size:36px">vercel</code></td><td>미리보기용 주소</td></tr>
+            <tr><td>“최근 배포 목록 보여줘”</td><td class="cmdcell"><code style="font-size:36px">vercel ls</code></td><td>언제 무엇이 배포됐는지</td></tr>
+            <tr><td>“마지막 배포에 문제 있었는지 확인해줘”</td><td class="cmdcell"><code style="font-size:36px">vercel inspect</code></td><td>배포 상태·기록</td></tr>
+          </tbody>
+        </table>
+        <div class="tip line" style="text-align:center">대시보드에서 클릭하던 일을 <b class="hl">말 한마디로</b></div>
+      </div>
+    </section>
+
+<!-- =============================== 심화 B. Supabase MCP =============================== -->
+
+    <!-- #49 -->
+    <section class="slide section optional" data-part="심화 · 시간이 있으면" data-title="심화 B. Supabase MCP"
+      data-notes="연습용 프로젝트에서만. 실제 학급 데이터가 있는 프로젝트에는 읽기 전용으로만.">
+      <span class="time">15분</span>
+      <div class="pnum">B</div>
+      <p class="plabel">심화 B</p>
+      <h2>Supabase MCP</h2>
+      <p class="lead">“MCP = Claude에게 그 서비스를 직접 다루는 손을 달아 주는 방식”</p>
+    </section>
+
+    <!-- #50 -->
+    <section class="slide twocol optional" data-part="심화 · 시간이 있으면" data-title="CLI vs MCP"
+      data-notes="오늘은 Vercel=CLI, Supabase=MCP. Supabase CLI는 DB 비밀번호 입력과 Windows 설치가 번거로워 MCP가 더 쉬움.">
+      <p class="eyebrow">맡기는 방법 두 가지</p>
+      <h2>CLI vs MCP</h2>
+      <div class="body">
+        <div class="cols">
+          <div class="tile">
+            <span class="vs-tag">CLI — 심화 A</span>
+            <ul class="tlist">
+              <li>Claude가 <b>터미널에 명령을 입력</b></li>
+              <li>무엇을 했는지 화면에 그대로 보임</li>
+            </ul>
+          </div>
+          <div class="tile dark">
+            <span class="vs-tag">MCP — 심화 B</span>
+            <ul class="tlist">
+              <li>Claude가 <b>서비스에 직접 연결</b></li>
+              <li>설치 없이 로그인만</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tip line" style="text-align:center">둘 다 “Claude에게 맡기는 방법” — <b class="hl">서비스마다 편한 쪽</b>을 고르면 됨</div>
+      </div>
+    </section>
+
+    <!-- #51 -->
+    <section class="slide command optional" data-part="심화 · 시간이 있으면" data-title="① 프로젝트 ID 확인"
+      data-notes="이 ID로 MCP 연결을 &quot;이 프로젝트 하나&quot;로 제한. 다른 프로젝트를 Claude가 못 건드리게 하는 안전장치.">
+      <p class="eyebrow">심화 B · 단계 ①</p>
+      <h2>프로젝트 ID 확인</h2>
+      <div class="body">
+        <div class="steps-inline">Supabase <span class="arrow">→</span> <b>Project Settings</b> <span class="arrow">→</span> <b>General</b> <span class="arrow">→</span> <b>Project ID</b> 복사</div>
+        <div class="tip">주소창의 <code class="c">supabase.com/dashboard/project/<span class="hl">○○○○</span></code> 뒤 글자와 같아요</div>
+        <div class="tip line">이 ID로 Claude가 <b class="hl">이 프로젝트 하나만</b> 만지게 제한해요</div>
+      </div>
+    </section>
+
+    <!-- #52 -->
+    <section class="slide command optional" data-part="심화 · 시간이 있으면" data-title="② 읽기 전용으로 연결"
+      data-notes="read_only=true = Claude가 보기만 하고 바꾸지 못함. --scope project라 이 폴더에 .mcp.json 파일이 생김(키는 안 들어 있어서 커밋해도 됨). 명령은 supabase.com/docs/guides/ai-tools/mcp 기준 — 수업 전 최신 확인.">
+      <p class="eyebrow">심화 B · 단계 ②</p>
+      <h2>읽기 전용으로 연결</h2>
+      <div class="body" style="gap:22px">
+        <p style="font-size:34px">Claude를 끄고(<span class="key">Ctrl+C</span> 두 번) 터미널에서 — <b>프로젝트ID</b> 자리를 바꿔서</p>
+        <div class="term sm">
+          <div class="term-head"><span class="dots"><i></i><i></i><i></i></span><span class="term-label">PowerShell</span><button class="copy-btn" type="button">복사</button></div>
+          <pre style="padding:24px 40px 28px"><code>claude mcp add --scope project --transport http supabase "https://mcp.supabase.com/mcp?project_ref=<span class="fill">프로젝트ID</span>&amp;read_only=true"</code></pre>
+        </div>
+        <div class="steps-inline" style="font-size:34px"><code class="c">claude</code> 실행 <span class="arrow">→</span> <code class="c">/mcp</code> <span class="arrow">→</span> <b>supabase</b> <span class="arrow">→</span> <b>Authenticate</b> <span class="arrow">→</span> 브라우저에서 허용</div>
+        <p class="small">read_only = Claude가 <b>보기만</b> 하고 바꾸지 못함</p>
+      </div>
+    </section>
+
+    <!-- #53 -->
+    <section class="slide checkpoint optional" data-part="심화 · 시간이 있으면" data-title="③ 물어보기 (읽기 전용)"
+      data-notes="Claude가 MCP 도구 사용 허락을 물으면 Yes. 보안 점검 결과가 비어 있으면 6부를 잘 한 것.">
+      <span class="badge">✋ 따라 하기 · 심화 B ③</span>
+      <h2>물어보기 (읽기 전용)</h2>
+      <div class="body" style="gap:24px">
+        <div class="term sm ask">
+          <div class="term-head"><span class="dots"><i></i><i></i><i></i></span><span class="term-label">Claude에게 입력</span><button class="copy-btn" type="button">복사</button></div>
+          <pre><code>Supabase MCP로 내 데이터베이스에 어떤 테이블이 있고 글이 몇 개 쌓였는지 알려줘</code></pre>
+        </div>
+        <div class="term sm ask">
+          <div class="term-head"><span class="dots"><i></i><i></i><i></i></span><span class="term-label">Claude에게 입력 — 핵심</span><button class="copy-btn" type="button">복사</button></div>
+          <pre><code>Supabase 보안 점검(advisors)을 돌려서 문제가 있으면 쉽게 설명해줘</code></pre>
+        </div>
+        <div class="tip"><b class="hl">RLS 빠뜨린 곳</b>을 Claude가 먼저 찾아 줘요</div>
+      </div>
+    </section>
+
+    <!-- #54 -->
+    <section class="slide command optional" data-part="심화 · 시간이 있으면" data-title="④ 쓰기 권한 열고 기능 추가"
+      data-notes="연습용 프로젝트에서만. 오늘 손으로 한 SQL 복사·붙여넣기가 사라지는 걸 보여 주는 게 목적.">
+      <p class="eyebrow">심화 B · 단계 ④</p>
+      <h2>쓰기 권한 열고 기능 추가</h2>
+      <div class="body" style="gap:18px; margin-top:36px">
+        <div class="term sm">
+          <div class="term-head"><span class="dots"><i></i><i></i><i></i></span><span class="term-label">PowerShell — 연결 지우기</span><button class="copy-btn" type="button">복사</button></div>
+          <pre style="padding:18px 40px 22px"><code>claude mcp remove supabase</code></pre>
+        </div>
+        <div class="term sm">
+          <div class="term-head"><span class="dots"><i></i><i></i><i></i></span><span class="term-label">PowerShell — read_only 없이 다시 연결</span><button class="copy-btn" type="button">복사</button></div>
+          <pre style="padding:18px 40px 22px"><code>claude mcp add --scope project --transport http supabase "https://mcp.supabase.com/mcp?project_ref=<span class="fill">프로젝트ID</span>"</code></pre>
+        </div>
+        <div class="term sm ask">
+          <div class="term-head"><span class="dots"><i></i><i></i><i></i></span><span class="term-label">claude 실행 후 Claude에게 입력</span><button class="copy-btn" type="button">복사</button></div>
+          <pre style="padding:18px 40px 22px"><code>방명록 글마다 좋아요 버튼을 추가해줘. 테이블 변경은 Supabase MCP로 하고, 코드 수정 후 커밋하고 푸시해줘.</code></pre>
+        </div>
+        <div class="tip warn" style="padding:18px 32px; font-size:30px"><span class="emoji">⚠️</span> 쓰기 권한이 있으면 <b>데이터를 지울 수도</b> 있어요 → 실행 전에 보여주는 SQL을 <b>읽고</b> 허락하기</div>
+      </div>
+    </section>
+
+    <div class="progress" aria-hidden="true"><i id="prog"></i></div>
+    <div class="pageno" id="count" aria-live="polite"></div>
+  </div>
+</main>
+
+<nav class="ctl" aria-label="슬라이드 조작">
+  <button class="pill" id="tocBtn" type="button" aria-controls="toc" aria-expanded="false">☰ 목록</button>
+  <button class="pill" id="prev" type="button">← 이전</button>
+  <button class="pill primary" id="next" type="button">다음 →</button>
+  <button class="pill" id="notesBtn" type="button">메모</button>
+  <button class="pill" id="themeBtn" type="button">화면 모드</button>
+  <button class="pill" id="fsBtn" type="button">전체화면</button>
+</nav>
+
+<div class="scrim" id="scrim"></div>
+
+<aside class="panel" id="toc" aria-label="슬라이드 목록">
+  <div class="panel-head"><h2>슬라이드 목록</h2><button class="pill" type="button" data-close>닫기</button></div>
+  <div class="panel-body toc" id="tocList"></div>
+  <div class="keys"><kbd>→</kbd> <kbd>Space</kbd> <kbd>PgDn</kbd> 다음 · <kbd>←</kbd> <kbd>PgUp</kbd> 이전<br><kbd>Home</kbd> 처음 · <kbd>End</kbd> 끝 · <kbd>F</kbd> 전체화면<br><kbd>N</kbd> 발표자 노트 · <kbd>L</kbd> 목록 · <kbd>D</kbd> 화면 모드</div>
+</aside>
+
+<div class="notes-bar" id="notesBar" aria-live="polite"></div>
+
+<script src="slides.js"></script>
+</body>
+</html>
